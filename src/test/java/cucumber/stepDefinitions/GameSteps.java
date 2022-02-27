@@ -1,6 +1,7 @@
 package cucumber.stepDefinitions;
 
 import application.TennisGame;
+import domain.DefaultMatch;
 import domain.Player;
 import domain.PlayerBuilder;
 import io.cucumber.java.en.Given;
@@ -9,14 +10,14 @@ import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GameStepDefinitions {
+public class GameSteps {
     private TennisGame game;
     private Player     player;
     private Player     opponent;
 
     @Given("A new game begins")
     public void aNewGameBegins() {
-        this.game = new TennisGame(PersonaMethods.getPlayerOne(), PersonaMethods.getPlayerTwo());
+        this.game = new TennisGame(DefaultMatch.of(PersonaMethods.getPlayerOne(), PersonaMethods.getPlayerTwo()));
     }
 
     @When("Player one scores four balls in a row")
@@ -39,11 +40,11 @@ public class GameStepDefinitions {
 
     @When("John participate to a new game")
     public void johnParticipateToANewGame() {
-        game = new TennisGame(player, PersonaMethods.getPlayerTwo());
+        game = new TennisGame(DefaultMatch.of(PersonaMethods.getJohn(), PersonaMethods.getPlayerTwo()));
     }
 
     @Then("John should be named {string} in the game")
     public void johnShouldBeNamedInTheGame(String expectedName) {
-        assertEquals(expectedName, game.getPlayerOne().getName());
+        assertEquals(expectedName, game.getMatch().getPlayerOne().getName());
     }
 }

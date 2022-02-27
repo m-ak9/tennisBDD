@@ -14,7 +14,6 @@ Feature: Game rules
     And The opponent had <score>
     When The player scores a point
     Then The result should be "player wins"
-
     Examples:
       | score    |
       | "love"   |

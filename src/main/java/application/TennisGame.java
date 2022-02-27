@@ -1,15 +1,14 @@
 package application;
 
+import domain.Match;
 import domain.Player;
 
 public class TennisGame {
 
-    private Player playerOne;
-    private Player playerTwo;
+    private Match match;
 
-    public TennisGame(Player playerOne, Player playerTwo) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
+    public TennisGame(Match match) {
+        this.match = match;
     }
 
     public String getScore() {
@@ -132,18 +131,14 @@ public class TennisGame {
     }
 
     public void playerOneWinBall() {
-        playerOne.addOneWinBall();
+        match.addOneWinBallToPlayerOne();
     }
 
     public void playerTwoWinBall() {
-        playerTwo.addOneWinBall();
+        match.addOneWinBallToPlayerTwo();
     }
 
-    public Player getPlayerOne() {
-        return playerOne;
-    }
-
-    public Player getPlayerTwo() {
-        return playerTwo;
+    public Match getMatch() {
+        return match;
     }
 }
